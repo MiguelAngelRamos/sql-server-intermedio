@@ -41,6 +41,11 @@ INSERT INTO Productos (Nombre, Precio) VALUES
 ('Micrófono', 70.00),
 ('Altavoces', 120.00);
 
+-- Productos sin ventas asociadas
+INSERT INTO Productos (Nombre, Precio) VALUES 
+('Smartwatch', 250.00),
+('Proyector', 450.00);
+
 -- Insertar clientes
 INSERT INTO Clientes (Nombre, Email) VALUES 
 ('Juan Pérez', 'juan.perez@academy.com'),
@@ -53,6 +58,10 @@ INSERT INTO Clientes (Nombre, Email) VALUES
 ('Marta Díaz', 'marta.diaz@academy.com'),
 ('Sofía Torres', 'sofia.torres@academy.com'),
 ('Javier González', 'javier.gonzalez@academy.com');
+
+-- Cliente sin ventas  asociadas
+INSERT INTO Clientes (Nombre, Email) VALUES 
+('Ricardo Mendoza', 'ricardo.mendoza@academy.com');
 
 -- Insertar ventas
 INSERT INTO Ventas (ProductoID, ClienteID, Cantidad) VALUES 
