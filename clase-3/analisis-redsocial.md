@@ -27,6 +27,7 @@ SELECT COUNT(*) as total_users from users;
 -- Obtener el numero total de usuarios(users) y el minimo de seguidores(followers)
 SELECT COUNT(*) as total_users, MIN(followers) as min_followers from users;
 
+-- Obtener el numero total de usuarios(users) y el maximo de seguidores(followers)
 SELECT COUNT(*) as total_users, MAX(followers) as max_followers from users;
 
 -- Obtener el nombre, apellido y numero de seguidores de los usuarios con menos followers (sub-consulta)
