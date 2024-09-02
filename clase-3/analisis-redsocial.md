@@ -68,5 +68,16 @@ GROUP BY country
 HAVING COUNT(*) BETWEEN 1 AND 5
 ORDER BY COUNT(*) desc;
 
+SELECT SUBSTRING('Hello, World!', 8,5);
 
+-- Contar dominios dentro de la columna email @
+SELECT 
+COUNT(*) AS total,
+SUBSTRING(email, CHARINDEX('@', email) + 1, LEN(email) - CHARINDEX('@', email)) AS domain
+FROM users 
+GROUP BY SUBSTRING(email, CHARINDEX('@', email) + 1, LEN(email) - CHARINDEX('@', email))
+HAVING 
+    COUNT(*) > 1
+ORDER BY
+  domain asc;
 ```
