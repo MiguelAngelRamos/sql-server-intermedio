@@ -50,6 +50,23 @@ FROM users
 WHERE
     followers = (SELECT max(followers) from users);
 
+-- Consulta HAVING <>
+SELECT 
+	COUNT(*) AS users, 
+	country 
+FROM users 
+GROUP BY country 
+HAVING COUNT(*) > 5
+ORDER BY COUNT(*) desc;
+
+-- BETWEEN 1 Y 5
+SELECT 
+	COUNT(*) AS users, 
+	country 
+FROM users 
+GROUP BY country 
+HAVING COUNT(*) BETWEEN 1 AND 5
+ORDER BY COUNT(*) desc;
 
 
 ```
