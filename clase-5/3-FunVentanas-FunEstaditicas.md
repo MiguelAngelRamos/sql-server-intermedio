@@ -54,4 +54,27 @@ SELECT
 FROM EmpleadosConRango
 WHERE Row_Num <=3
 ORDER BY Departamento, Row_Num;
+
+
+-- Identificar Empleados con Salarios por Encima del Promedio de su Departamento
+/* 
+- CASE: Inicia la expresión condicional.
+- WHEN: Define una condición que se evalúa.
+- THEN: Indica qué valor devolver si la condición se cumple.
+- ELSE: (Opcional) Proporciona un valor alternativo si ninguna condición se cumple.
+- END: Finaliza la expresión. 
+*/
+SELECT 	
+	EmpleadoID, 
+	Nombre, 
+	Apellido, 
+	Departamento, 
+	Salario,
+    AVG(Salario) OVER (PARTITION BY Departamento) AS Promedio_Departamento,
+	CASE
+		WHEN Salario > AVG(Salario) OVER (PARTITION BY Departamento) THEN 'Por Encima del Promedio'
+		ELSE 'Por Debajo del Promedio'
+	END AS Comparacion_Promedio
+FROM Empleados
+ORDER BY Departamento, Salario DESC;
 ```
