@@ -77,4 +77,19 @@ SELECT
 	END AS Comparacion_Promedio
 FROM Empleados
 ORDER BY Departamento, Salario DESC;
+
+
+-- Calcular el Total de Ventas por Empleado y su Rango dentro del departamento.
+SELECT 
+E.EmpleadoID, 
+E.Nombre, 
+E.Apellido,
+E.Departamento,
+SUM (V.cantidad * P.precio) AS Total_Ventas,
+RANK() OVER (PARTITION BY E.Departamento ORDER BY SUM (V.cantidad * P.precio) DESC) AS Rango_Ventas_Departamento
+FROM Empleados E
+JOIN Ventas V ON E.EmpleadoID = V.EmpleadoID
+JOIN Productos P ON V.ProductoID = P.ProductoID
+GROUP BY E.EmpleadoID, E.Nombre, E.Apellido, E.Departamento
+ORDER BY E.Departamento, Rango_Ventas_Departamento;
 ```
